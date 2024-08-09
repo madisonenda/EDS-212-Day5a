@@ -1,0 +1,54 @@
+---
+title: "EDS212 Day 5a"
+author: "Maddy Enda"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| warning: false
+#| message: false 
+
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+#| include: false
+#Taking a look at the data in the starwars set
+head(starwars)
+
+tail(starwars)
+
+dim(starwars)
+
+```
+
+#Create a ggplot (scatterplot) of character `mass` (y-axis) and `height` (x-axis). Color based on `mass`
+
+```{r}
+#| warning: false
+#| echo: false
+
+ggplot(starwars, aes(x= height, y= mass, color=mass)) +geom_point() +labs(x="Height", y= "Mass") + ggtitle("here is my title")
+```
+
+
+#Creating a histogram of character heights, fill=purple, color=orange
+```{r}
+#| fig-cap: "This is my figure caption"
+#| fig-alt: "This is some alt text"
+ggplot(starwars, aes(x=height, color= "orange")) +geom_histogram(fill="purple")+ labs(x= "height", y="count") +ggtitle("Character Height")
+```
+
+
+```{r}
+View(starwars)
+
+sw_mean_height <- round(mean(starwars$height, na.rm= TRUE), 3)
+
+```
+
+The mean height of star wars characters is `r sw_mean_height`
